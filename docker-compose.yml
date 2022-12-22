@@ -4,14 +4,15 @@ volumes:
     unit-state:
 
 services:
-    # Helper service to always have latest composer.lock changes installed
     composer:
         build: .
         image: liox-ai
         volumes:
             - .:/app
         working_dir: /app
-        command: "composer install --no-interaction"
+        restart: 'no'
+        entrypoint: ["composer"]
+        command: ["install", "--no-interaction"]
 
     web:
         image: liox-ai
@@ -20,6 +21,7 @@ services:
             - .:/app
             - .docker/nginx-unit:/docker-entrypoint.d
         working_dir: /app
+        restart: unless-stopped
         depends_on:
             - composer
         ports:
@@ -32,4 +34,4 @@ services:
         working_dir: /app
         restart: unless-stopped
         entrypoint: [""]
-        command: "bash -c 'npm install && npm run watch'"
+        command: ["bash", "-c", "npm install && npm run watch"]

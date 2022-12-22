@@ -21,7 +21,6 @@
         "doctrine/orm": "^2.9",
         "monolog/monolog": "^3.0",
         "ramsey/uuid": "^4.2",
-        "sensio/framework-extra-bundle": "^6.2",
         "sentry/sentry-symfony": "^4.2",
         "symfony/asset": "^6.2",
         "symfony/config": "^6.2",
@@ -29,7 +28,6 @@
         "symfony/dependency-injection": "^6.2",
         "symfony/doctrine-messenger": "^6.2",
         "symfony/dotenv": "^6.2",
-        "symfony/expression-language": "^6.2",
         "symfony/flex": "^2.1",
         "symfony/form": "^6.2",
         "symfony/framework-bundle": "^6.2",
@@ -77,10 +75,7 @@
     "autoload": {
         "psr-4": {
             "LioxAI\\": "src"
-        },
-        "exclude-from-classmap": [
-            "src/Infrastructure/Persistence/Doctrine/Migrations"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
