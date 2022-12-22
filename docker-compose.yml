@@ -26,7 +26,7 @@ services:
             - "8080:8080"
 
     js-watch:
-        image: node:18
+        image: node:16
         volumes:
             - .:/app
         working_dir: /app
