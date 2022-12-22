@@ -1,0 +1,24 @@
+includes:
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+    - vendor/phpstan/phpstan-phpunit/rules.neon
+    - vendor/phpstan/phpstan-symfony/extension.neon
+    - vendor/phpstan/phpstan-symfony/rules.neon
+    - vendor/phpstan/phpstan-doctrine/extension.neon
+    - vendor/phpstan/phpstan-doctrine/rules.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - bin
+        - tests
+    # checkUninitializedProperties: true # TODO: enable later
+    excludePaths:
+        - tests/bootstrap.php
+        - tests/object-manager.php
+        - tests/GitRepository/
+        - src/Infrastructure/Symfony/Config
+    symfony:
+        container_xml_path: var/cache/dev/LioxAI_Framework_LioxKernelDevDebugContainer.xml
+    doctrine:
+        objectManagerLoader: tests/object-manager.php
