@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Liox\Shop\Ui\Homepage;
+namespace Liox\Shop\Ui\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +12,6 @@ final class HomepageController extends AbstractController
     #[Route(path: '/', name: 'homepage', methods: ['GET'])]
     public function __invoke(): Response
     {
-        return $this->render('Homepage/homepage.html.twig');
+        return $this->render('homepage.html.twig');
     }
 }

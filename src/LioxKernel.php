@@ -1,6 +1,6 @@
 <?php
 
-namespace Liox\Shop\Framework;
+namespace Liox\Shop;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -14,25 +14,19 @@ class LioxKernel extends BaseKernel
 
     protected function configureContainer(ContainerConfigurator $container): void
     {
-        $container->import(__DIR__ . '/Config/packages/*.php');
-        $container->import(__DIR__ . '/Config/packages/'.$this->environment.'/*.php');
+        $container->import(__DIR__ . '/../config/packages/*.php');
+        $container->import(__DIR__ . '/../config/packages/'.$this->environment.'/*.php');
 
-        $container->import(__DIR__ . '/Config/services.php');
-        $container->import(__DIR__ . '/Config/{services}_'.$this->environment.'.php');
+        $container->import(__DIR__ . '/../config/services.php');
+        $container->import(__DIR__ . '/../config/{services}_'.$this->environment.'.php');
     }
 
     protected function configureRoutes(RoutingConfigurator $routes): void
     {
-        $routes->import(__DIR__ . '/Config/{routes}/'.$this->environment.'/*.php');
-        $routes->import(__DIR__ . '/Config/{routes}/*.php');
+        $routes->import(__DIR__ . '/../config/{routes}/'.$this->environment.'/*.php');
+        $routes->import(__DIR__ . '/../config/{routes}/*.php');
 
-        $routes->import(__DIR__ . '/Config/routes.php');
-    }
-
-
-    public function getProjectDir(): string
-    {
-        return __DIR__ . '/../..';
+        $routes->import(__DIR__ . '/../config/routes.php');
     }
 
 
@@ -42,7 +36,7 @@ class LioxKernel extends BaseKernel
     public function registerBundles(): iterable
     {
         /** @var array<class-string<Bundle>, array<string>> $contents */
-        $contents = require __DIR__ . '/Config/bundles.php';
+        $contents = require __DIR__ . '/../config/bundles.php';
 
         foreach ($contents as $class => $envs) {
             if ($envs[$this->environment] ?? $envs['all'] ?? false) {

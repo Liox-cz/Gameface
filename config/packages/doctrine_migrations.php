@@ -7,7 +7,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('doctrine_migrations', [
         'migrations_paths' => [
-            'Liox\\Shop\\Database\\Migrations' => '%kernel.project_dir%/src/Database/Migrations'
+            'Liox\\Shop\\Migrations' => '%kernel.project_dir%/migrations'
         ],
         'all_or_nothing' => true,
         'enable_profiler' => '%kernel.debug%'

@@ -13,7 +13,7 @@ parameters:
         - src
         - bin
         - tests
-    # checkUninitializedProperties: true # TODO: enable later
+        - config
     scanDirectories:
       - var/cache/dev/Symfony
     excludePaths:
@@ -23,3 +23,4 @@ parameters:
         container_xml_path: var/cache/dev/Liox_Shop_Framework_LioxKernelDevDebugContainer.xml
     doctrine:
         objectManagerLoader: tests/object-manager.php
+    checkUninitializedProperties: true

@@ -25,7 +25,7 @@ return static function(ContainerConfigurator $configurator): void
         ->tag('monolog.processor');
 
     // Controllers
-    $services->load('Liox\\Shop\\Ui\\', __DIR__ . '/../../Ui/**/{*Controller.php}');
+    $services->load('Liox\\Shop\\Ui\\Controller\\', __DIR__ . '/../src/Ui/Controller/{*Controller.php}');
 
     $services->set(PdoSessionHandler::class)
         ->args([
