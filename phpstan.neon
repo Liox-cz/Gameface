@@ -13,11 +13,11 @@ parameters:
         - bin
         - tests
     # checkUninitializedProperties: true # TODO: enable later
+    scanDirectories:
+      - var/cache/dev/Symfony
     excludePaths:
         - tests/bootstrap.php
         - tests/object-manager.php
-        - tests/GitRepository/
-        - src/Infrastructure/Symfony/Config
     symfony:
         container_xml_path: var/cache/dev/Liox_Shop_Framework_LioxKernelDevDebugContainer.xml
     doctrine:
