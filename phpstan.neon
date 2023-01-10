@@ -20,7 +20,7 @@ parameters:
         - tests/bootstrap.php
         - tests/object-manager.php
     symfony:
-        container_xml_path: var/cache/dev/Liox_Shop_Framework_LioxKernelDevDebugContainer.xml
+        container_xml_path: var/cache/dev/Liox_Shop_LioxKernelDevDebugContainer.xml
     doctrine:
         objectManagerLoader: tests/object-manager.php
     checkUninitializedProperties: true
