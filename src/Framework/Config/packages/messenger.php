@@ -1,8 +1,7 @@
 <?php declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symfony\Config\FrameworkConfig;
 
-return static function (FrameworkConfig $framework, ContainerConfigurator $configurator) {
+return static function (ContainerConfigurator $containerConfigurator): void {
 
 };

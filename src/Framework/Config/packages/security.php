@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Symfony\Config\SecurityConfig;
+use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-return static function (SecurityConfig $securityConfig): void {
+return static function (ContainerConfigurator $containerConfigurator): void {
 
 };

@@ -17,15 +17,17 @@ services:
 
     # Helper service to run database migrations
     db-migrations:
-        image: ghcr.io/peon-dev/php:main
+        build: .
+        image: liox-shop
         depends_on:
             - postgres
         volumes:
-            - .:/peon
-        working_dir: /peon
+            - .:/app
+        working_dir: /app
         command: "bash -c 'wait-for-it postgres:5432 -- sleep 3 && bin/console doctrine:migrations:migrate --no-interaction'"
 
     web:
+        build: .
         image: liox-shop
         volumes:
             - unit-state:/var/lib/unit/state
