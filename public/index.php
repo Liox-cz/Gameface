@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use LioxAI\Framework\LioxKernel;
+use Liox\Shop\Framework\LioxKernel;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 

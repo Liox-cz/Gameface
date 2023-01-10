@@ -1,5 +1,5 @@
 {
-    "name": "janmikes/liox-ai-shop",
+    "name": "liox/shop",
     "type": "project",
     "description": "",
     "authors": [
@@ -74,12 +74,12 @@
     },
     "autoload": {
         "psr-4": {
-            "LioxAI\\": "src"
+            "Liox\\Shop\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LioxAI\\Tests\\": "tests"
+            "Liox\\Shop\\Tests\\": "tests"
         }
     },
     "scripts": {

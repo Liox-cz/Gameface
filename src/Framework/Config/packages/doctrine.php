@@ -15,11 +15,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'naming_strategy' => 'doctrine.orm.naming_strategy.underscore_number_aware',
             'auto_mapping' => true,
             'mappings' => [
-                'LioxAI' => [
+                'Liox' => [
                     'is_bundle' => false,
                     'type' => 'xml',
                     'dir' => '%kernel.project_dir%/src',
-                    'prefix' => 'LioxAI',
+                    'prefix' => 'Liox\\Shop',
                 ],
             ],
         ],

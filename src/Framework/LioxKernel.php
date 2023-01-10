@@ -1,6 +1,6 @@
 <?php
 
-namespace LioxAI\Framework;
+namespace Liox\Shop\Framework;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;

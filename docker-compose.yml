@@ -6,7 +6,7 @@ volumes:
 services:
     composer:
         build: .
-        image: liox-ai
+        image: liox-shop
         volumes:
             - .:/app
         working_dir: /app
@@ -15,7 +15,7 @@ services:
         command: ["install", "--no-interaction"]
 
     web:
-        image: liox-ai
+        image: liox-shop
         volumes:
             - unit-state:/var/lib/unit/state
             - .:/app

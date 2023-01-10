@@ -1,6 +1,6 @@
 <?php
 
-use LioxAI\Framework\LioxKernel;
+use Liox\Shop\Framework\LioxKernel;
 use Symfony\Component\Dotenv\Dotenv;
 
 require __DIR__ . '/../vendor/autoload.php';

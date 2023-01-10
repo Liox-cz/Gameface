@@ -19,6 +19,6 @@ parameters:
         - tests/GitRepository/
         - src/Infrastructure/Symfony/Config
     symfony:
-        container_xml_path: var/cache/dev/LioxAI_Framework_LioxKernelDevDebugContainer.xml
+        container_xml_path: var/cache/dev/Liox_Shop_Framework_LioxKernelDevDebugContainer.xml
     doctrine:
         objectManagerLoader: tests/object-manager.php

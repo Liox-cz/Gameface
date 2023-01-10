@@ -14,5 +14,5 @@ return static function(ContainerConfigurator $configurator): void
         ->public();
 
     // Data fixtures
-    $services->load('LioxAI\\Tests\\DataFixtures\\', __DIR__ . '/../../../../tests/DataFixtures/{*.php}');
+    $services->load('Liox\\Shop\\Tests\\DataFixtures\\', __DIR__ . '/../../../../tests/DataFixtures/{*.php}');
 };
