@@ -12,7 +12,4 @@ return static function(ContainerConfigurator $configurator): void
         ->autoconfigure()
         ->autowire()
         ->public();
-
-    // Data fixtures
-    $services->load('Liox\\Shop\\Tests\\DataFixtures\\', __DIR__ . '/../tests/DataFixtures/{*.php}');
 };

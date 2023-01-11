@@ -6,6 +6,7 @@ namespace Liox\Shop\Doctrine;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\ConversionException;
 use Doctrine\DBAL\Types\JsonType;
+use Liox\Shop\Value\Currency;
 use Liox\Shop\Value\Price;
 
 final class PriceDoctrineType extends JsonType
@@ -44,7 +45,11 @@ final class PriceDoctrineType extends JsonType
             return null;
         }
 
-        return new Price();
+        return new Price(
+            $jsonData['value_without_vat'],
+            $jsonData['vat'],
+            Currency::from($jsonData['currency']),
+        );
     }
 
     /**
@@ -63,8 +68,9 @@ final class PriceDoctrineType extends JsonType
 
         // TODO: what about some hydrator instead of doing it manually?
         $data = [
-            'recipe_name' => $value->recipeName->value,
-            'baseline_hash' => $value->baselineHash,
+            'value_without_vat' => $value->valueWithoutVat,
+            'vat' => $value->vat,
+            'currency' => $value->currency->value,
         ];
 
         $converted = parent::convertToDatabaseValue($data, $platform);

@@ -21,14 +21,20 @@ return static function(ContainerConfigurator $configurator): void
         ->autowire()
         ->public();
 
+    $services->set(PdoSessionHandler::class)
+        ->args([
+            env('DATABASE_URL'),
+        ]);
+
     $services->set(PsrLogMessageProcessor::class)
         ->tag('monolog.processor');
 
     // Controllers
     $services->load('Liox\\Shop\\Controller\\', __DIR__ . '/../src/Controller/{*Controller.php}');
 
-    $services->set(PdoSessionHandler::class)
-        ->args([
-            env('DATABASE_URL'),
-        ]);
+    // Repositories
+    $services->load('Liox\\Shop\\Repository\\', __DIR__ . '/../src/Repository/{*Repository.php}');
+
+    // Data fixtures
+    $services->load('Liox\\Shop\\Tests\\DataFixtures\\', __DIR__ . '/../tests/DataFixtures/{*.php}');
 };

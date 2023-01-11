@@ -23,10 +23,10 @@ class ProductVariant
         public readonly Product $product,
 
         #[ORM\Column(type: Types::STRING)]
-        private string $name,
+        public string $name,
 
         #[ORM\Column(type: PriceDoctrineType::NAME)]
-        private Price $price,
+        public Price $price,
     ) {
     }
 }

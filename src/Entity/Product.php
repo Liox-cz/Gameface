@@ -17,7 +17,7 @@ class Product
         public readonly UuidInterface $id,
 
         #[ORM\Column(type: Types::STRING)]
-        private string $name,
+        public string $name,
     ) {
     }
 }
