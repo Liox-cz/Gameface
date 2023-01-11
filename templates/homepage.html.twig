@@ -3,4 +3,11 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    {% for variant in products %}
+        <p>
+            {{ variant.product.name }} - {{ variant.name }}<br>
+            {{ variant.price.valueWithoutVat }} {{ variant.price.currency.value }}<br>
+            <button>Do košíčku</button>
+        </p>
+    {% endfor %}
 {% endblock %}

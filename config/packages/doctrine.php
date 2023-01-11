@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Liox\Shop\Doctrine\AddressDoctrineType;
+use Liox\Shop\Doctrine\PriceDoctrineType;
 use Ramsey\Uuid\Doctrine\UuidType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
@@ -11,6 +13,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'url' => '%env(resolve:DATABASE_URL)%',
             'types' => [
                 'uuid' => UuidType::class,
+                AddressDoctrineType::NAME => AddressDoctrineType::class,
+                PriceDoctrineType::NAME => PriceDoctrineType::class,
             ],
         ],
         'orm' => [
