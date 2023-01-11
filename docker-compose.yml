@@ -38,7 +38,7 @@ services:
         depends_on:
             - composer
         ports:
-            - "8080:8080"
+            - "${LIOX_WEB_PORT:-8080}:8080"
 
     postgres:
         image: postgres:13

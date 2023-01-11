@@ -99,7 +99,6 @@
         "symfony/symfony": "*"
     },
     "extra": {
-        "config-dir": "src/Framework/Config",
         "symfony": {
             "allow-contrib": true,
             "require": "6.2.*",
