@@ -2,13 +2,16 @@
 
 declare(strict_types=1);
 
+use Ramsey\Uuid\Doctrine\UuidType;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('doctrine', [
         'dbal' => [
             'url' => '%env(resolve:DATABASE_URL)%',
-            'types' => [],
+            'types' => [
+                'uuid' => UuidType::class,
+            ],
         ],
         'orm' => [
             'auto_generate_proxy_classes' => true,
@@ -16,10 +19,9 @@ return static function (ContainerConfigurator $containerConfigurator): void {
             'auto_mapping' => true,
             'mappings' => [
                 'Liox' => [
-                    'is_bundle' => false,
-                    'type' => 'xml',
-                    'dir' => '%kernel.project_dir%/src',
-                    'prefix' => 'Liox\\Shop',
+                    'type' => 'attribute',
+                    'dir' => '%kernel.project_dir%/src/Entity',
+                    'prefix' => 'Liox\\Shop\\Entity',
                 ],
             ],
         ],
