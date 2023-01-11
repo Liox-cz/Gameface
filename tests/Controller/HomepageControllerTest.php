@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Liox\Shop\Tests\Ui\Controller;
+namespace Liox\Shop\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
