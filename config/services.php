@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use Liox\Shop\Services\Cart\CartStorage;
+use Liox\Shop\Services\Cart\SessionCartStorage;
 use Monolog\Processor\PsrLogMessageProcessor;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler;
@@ -37,4 +39,12 @@ return static function(ContainerConfigurator $configurator): void
 
     // Data fixtures
     $services->load('Liox\\Shop\\Tests\\DataFixtures\\', __DIR__ . '/../tests/DataFixtures/{*.php}');
+
+    // Message handlers
+    $services->load('Liox\\Shop\\MessageHandler\\', __DIR__ . '/../src/MessageHandler/**/{*.php}');
+
+    // Services
+    $services->load('Liox\\Shop\\Services\\', __DIR__ . '/../src/Services/**/{*.php}');
+
+    $services->alias(CartStorage::class, SessionCartStorage::class);
 };
