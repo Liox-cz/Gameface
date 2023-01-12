@@ -37,13 +37,9 @@ final class PriceDoctrineType extends JsonType
             return null;
         }
 
-        /** @var array{} $jsonData */
+        /** @var array{value_without_vat: int, vat: int, currency: string} $jsonData */
         $jsonData = parent::convertToPHPValue($value, $platform);
         assert(is_array($jsonData));
-
-        if (empty($jsonData)) {
-            return null;
-        }
 
         return new Price(
             $jsonData['value_without_vat'],
@@ -66,7 +62,6 @@ final class PriceDoctrineType extends JsonType
             throw ConversionException::conversionFailedInvalidType($value, $this->getName(), [Price::class]);
         }
 
-        // TODO: what about some hydrator instead of doing it manually?
         $data = [
             'value_without_vat' => $value->valueWithoutVat,
             'vat' => $value->vat,
