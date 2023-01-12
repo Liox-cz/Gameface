@@ -1,11 +1,63 @@
 <?php
 
+declare(strict_types=1);
+
+use Liox\Shop\LioxKernel;
+use Liox\Shop\Tests\TestingDatabaseCaching;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Dotenv\Dotenv;
 
-require dirname(__DIR__).'/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
-if (file_exists(dirname(__DIR__).'/config/bootstrap.php')) {
-    require dirname(__DIR__).'/config/bootstrap.php';
-} elseif (method_exists(Dotenv::class, 'bootEnv')) {
-    (new Dotenv())->bootEnv(dirname(__DIR__).'/.env');
+$_ENV['APP_ENV'] = 'test';
+(new Dotenv())->loadEnv(__DIR__ . '/../.env');
+
+$cacheFilePath = __DIR__ . '/.database.cache';
+$currentDatabaseHash = TestingDatabaseCaching::calculateDirectoriesHash(
+    __DIR__ . '/../migrations',
+    __DIR__ . '/DataFixtures',
+);
+
+if (
+    TestingDatabaseCaching::isCacheUpToDate($cacheFilePath, $currentDatabaseHash) === false
+) {
+    bootstrapDatabase();
+    file_put_contents($cacheFilePath, $currentDatabaseHash);
+}
+
+
+function bootstrapDatabase(): void
+{
+    $kernel = new LioxKernel('test', true);
+    $kernel->boot();
+
+    $application = new Application($kernel);
+    $application->setAutoExit(false);
+
+    $application->run(new ArrayInput([
+        'command' => 'doctrine:database:drop',
+        '--if-exists' => '1',
+        '--force' => '1',
+    ]));
+
+    $application->run(new ArrayInput([
+        'command' => 'doctrine:database:create',
+    ]));
+
+    // Faster than running migrations
+    $application->run(new ArrayInput([
+        'command' => 'doctrine:schema:create',
+    ]));
+
+    $result = $application->run(new ArrayInput([
+        'command' => 'doctrine:fixtures:load',
+        '--no-interaction' => 1,
+    ]));
+
+    if ($result !== 0) {
+        throw new LogicException('Command doctrine:fixtures:load failed');
+    }
+
+    $kernel->shutdown();
 }
