@@ -6,14 +6,14 @@ namespace Liox\Shop\Repository;
 use Doctrine\ORM\EntityManagerInterface;
 use Liox\Shop\Entity\ProductVariant;
 
-final class ProductVariantRepository
+readonly final class ProductVariantRepository
 {
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
+        private EntityManagerInterface $entityManager,
     ) {}
 
     /**
-     * @return array<ProductVariant>
+     * @return list<ProductVariant>
      */
     public function findAll(): array
     {
