@@ -6,10 +6,8 @@ namespace Liox\Shop\FormType;
 use Generator;
 use Liox\Shop\Entity\ProductVariant;
 use Liox\Shop\FormData\AddToCartFormData;
-use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -42,6 +40,7 @@ final class AddToCartFormType extends AbstractType
 
     /**
      * @param list<ProductVariant> $variants
+     *
      * @return Generator<string, string>
      */
     private function mapVariantsToChoices(array $variants): Generator
