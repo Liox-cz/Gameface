@@ -49,7 +49,8 @@ final class PriceDoctrineType extends JsonType
     }
 
     /**
-     * @param null|Price $value
+     * @template T of null|Price
+     * @param T $value
      * @throws ConversionException
      */
     public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform): ?string
@@ -68,12 +69,6 @@ final class PriceDoctrineType extends JsonType
             'currency' => $value->currency->value,
         ];
 
-        $converted = parent::convertToDatabaseValue($data, $platform);
-
-        if (is_string($converted) === false && $converted !== null) {
-            throw ConversionException::conversionFailedSerialization($value, 'json', 'Invalid json format');
-        }
-
-        return $converted;
+        return parent::convertToDatabaseValue($data, $platform);
     }
 }
