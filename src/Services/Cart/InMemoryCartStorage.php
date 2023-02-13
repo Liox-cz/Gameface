@@ -37,4 +37,15 @@ final class InMemoryCartStorage implements CartStorage
 
         return $cart;
     }
+
+    public function countItems(): int
+    {
+        $total = 0;
+
+        foreach ($this->items as $amountInCart) {
+            $total += $amountInCart;
+        }
+
+        return $total;
+    }
 }
