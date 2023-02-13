@@ -1,12 +1,12 @@
 /vendor/
 /var/
 /public/bundles/
+.phpunit.cache/
 
 .env.local
 .env.local.php
 .env.*.local
 
-.phpunit.result.cache
 .database.cache
 
 .docker-data/
