@@ -48,4 +48,20 @@ final class SessionCartStorage implements CartStorage
 
         return $cart;
     }
+
+    public function countItems(): int
+    {
+        $session = $this->requestStack->getSession();
+
+        /** @var array<string, int> $items */
+        $items = $session->get(self::SESSION_NAME, []);
+
+        $total = 0;
+
+        foreach ($items as $amount) {
+            $total += $amount;
+        }
+
+        return $total;
+    }
 }

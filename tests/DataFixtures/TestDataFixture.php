@@ -13,27 +13,37 @@ use Ramsey\Uuid\Uuid;
 
 final class TestDataFixture extends Fixture
 {
+    public const PRODUCT_ID = 'bc6838d6-abea-11ed-b5af-1266a710edb3';
+    public const VARIANT_1_ID = 'c8481586-abea-11ed-805e-1266a710edb3';
+    public const VARIANT_2_ID = 'c892da3a-abea-11ed-b091-1266a710edb3';
+
+
     public function load(ObjectManager $manager): void
     {
-        // TODO: Implement load() method.
-
         $product = new Product(
-            Uuid::uuid7(),
+            Uuid::fromString(self::PRODUCT_ID),
             'Testovací kresbička',
         );
 
         $manager->persist($product);
 
-        for ($i=1; $i<=2; $i++) {
-            $variant = new ProductVariant(
-                Uuid::uuid7(),
-                $product,
-                "Varianta $i",
-                new Price(10, 21, Currency::CZK),
-            );
+        $variant = new ProductVariant(
+            Uuid::fromString(self::VARIANT_1_ID),
+            $product,
+            'Varianta 1',
+            new Price(10, 21, Currency::CZK),
+        );
 
-            $manager->persist($variant);
-        }
+        $manager->persist($variant);
+
+        $variant = new ProductVariant(
+            Uuid::fromString(self::VARIANT_2_ID),
+            $product,
+            'Varianta 2',
+            new Price(20, 21, Currency::CZK),
+        );
+
+        $manager->persist($variant);
 
         $manager->flush();
     }

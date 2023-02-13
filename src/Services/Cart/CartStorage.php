@@ -14,4 +14,6 @@ interface CartStorage
      * @return list<CartItem>
      */
     public function getItems(): array;
+
+    public function countItems(): int;
 }
