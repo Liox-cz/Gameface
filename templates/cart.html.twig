@@ -4,4 +4,17 @@
 
 {% block content %}
     <h1>Items in cart:</h1>
+
+    {% for cart_item in cart_items %}
+        <p>
+            {{ cart_item.variant.product.name }} /
+            {{ cart_item.variant.name }} /
+            {{ cart_item.variant.price.valueWithoutVat }} Kč /
+            {{ cart_item.amount }} Ks /
+            Total: {{ cart_item.variant.price.valueWithoutVat * cart_item.amount }} Kč
+        </p>
+    {% endfor %}
+
+    <hr>
+    Total totalis: {{ cart.totalPrice.amount }} Kč
 {% endblock %}
