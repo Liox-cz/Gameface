@@ -6,6 +6,7 @@ namespace Liox\Shop\Services\Cart;
 use Liox\Shop\Query\GetVariants;
 use Liox\Shop\Value\CartItem;
 use Liox\Shop\Value\Currency;
+use Liox\Shop\Value\ProductVariantInCart;
 use Liox\Shop\Value\TotalPriceWithVat;
 use Ramsey\Uuid\UuidInterface;
 
@@ -47,5 +48,29 @@ readonly final class Cart
         }
 
         return $totalWithVat;
+    }
+
+    /**
+     * @return list<ProductVariantInCart>
+     */
+    public function items(): array
+    {
+        $variantIds = array_map(
+            static fn (CartItem $cartItem): UuidInterface => $cartItem->productVariantId,
+            $this->cartStorage->getItems(),
+        );
+
+        $variantsInCart = $this->getVariantsInCart->byIds($variantIds);
+        $variantItemsInCart = [];
+
+        foreach ($variantsInCart as $variantInCart) {
+            foreach ($this->cartStorage->getItems() as $item) {
+                if ($item->productVariantId->equals($variantInCart->id)) {
+                    $variantItemsInCart[] = new ProductVariantInCart($item->amount, $variantInCart);
+                }
+            }
+        }
+
+        return $variantItemsInCart;
     }
 }
