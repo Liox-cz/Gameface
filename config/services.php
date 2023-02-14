@@ -45,7 +45,6 @@ return static function(ContainerConfigurator $configurator): void
 
     // Services
     $services->load('Liox\\Shop\\Services\\', __DIR__ . '/../src/Services/**/{*.php}');
-    $services->load('Liox\\Shop\\Twig\\', __DIR__ . '/../src/Twig/**/{*.php}');
     $services->load('Liox\\Shop\\Query\\', __DIR__ . '/../src/Query/**/{*.php}');
 
     $services->alias(CartStorage::class, SessionCartStorage::class);

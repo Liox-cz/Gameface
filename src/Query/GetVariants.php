@@ -3,37 +3,30 @@ declare(strict_types=1);
 
 namespace Liox\Shop\Query;
 
+use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Liox\Shop\Entity\ProductVariant;
-use Liox\Shop\Services\Cart\CartStorage;
-use Liox\Shop\Value\CartItem;
+use Ramsey\Uuid\UuidInterface;
 
-readonly final class GetVariantsInCart
+readonly final class GetVariants
 {
     public function __construct(
-        private CartStorage $cartStorage,
         private EntityManagerInterface $entityManager,
     ) {
     }
 
     /**
+     * @param list<UuidInterface> $variantIds
      * @return list<ProductVariant>
      */
-    public function __invoke(): array
+    public function byIds(array $variantIds): array
     {
-        $items = $this->cartStorage->getItems();
-
-        $variantIds = array_map(
-            static fn (CartItem $cartItem): string => $cartItem->productVariantId->toString(),
-            $items,
-        );
-
         return $this->entityManager->createQueryBuilder()
             ->select('product_variant')
             ->from(ProductVariant::class, 'product_variant')
             ->join('product_variant.product', 'product')
             ->where('product_variant.id IN (:variantIds)')
-            ->setParameter('variantIds', $variantIds)
+            ->setParameter('variantIds', $variantIds, ArrayParameterType::STRING)
             ->addSelect('product')
             ->getQuery()
             ->getResult();
