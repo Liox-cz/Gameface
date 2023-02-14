@@ -15,5 +15,5 @@ interface CartStorage
      */
     public function getItems(): array;
 
-    public function countItems(): int;
+    public function clear(): void;
 }

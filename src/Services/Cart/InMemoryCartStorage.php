@@ -38,14 +38,8 @@ final class InMemoryCartStorage implements CartStorage
         return $cart;
     }
 
-    public function countItems(): int
+    public function clear(): void
     {
-        $total = 0;
-
-        foreach ($this->items as $amountInCart) {
-            $total += $amountInCart;
-        }
-
-        return $total;
+        $this->items = new SplObjectStorage();
     }
 }
