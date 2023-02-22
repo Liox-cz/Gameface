@@ -127,6 +127,7 @@ class CartItemTest extends TestCase
         $item = CartItem::fromArray($data);
 
         $this->assertTrue($uuid->equals($item->productVariantId));
+        $this->assertNotNull($item->dimensions);
         $this->assertTrue($dimensions->isSame($item->dimensions));
     }
 }
