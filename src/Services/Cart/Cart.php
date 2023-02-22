@@ -20,13 +20,7 @@ readonly final class Cart
 
     public function itemsCount(): int
     {
-        $total = 0;
-
-        foreach ($this->cartStorage->getItems() as $item) {
-            $total += $item->amount;
-        }
-
-        return $total;
+        return count($this->cartStorage->getItems());
     }
 
     public function totalPrice(): TotalPriceWithVat
@@ -42,7 +36,8 @@ readonly final class Cart
         foreach ($variantsInCart as $variantInCart) {
             foreach ($this->cartStorage->getItems() as $item) {
                 if ($item->productVariantId->equals($variantInCart->id)) {
-                    $totalWithVat = $totalWithVat->add($item->amount * $variantInCart->price->valueWithoutVat);
+                    // TODO: calculate with dimensions * price per unit
+                    $totalWithVat = $totalWithVat->add($variantInCart->price->valueWithoutVat);
                 }
             }
         }
@@ -66,7 +61,7 @@ readonly final class Cart
         foreach ($variantsInCart as $variantInCart) {
             foreach ($this->cartStorage->getItems() as $item) {
                 if ($item->productVariantId->equals($variantInCart->id)) {
-                    $variantItemsInCart[] = new ProductVariantInCart($item->amount, $variantInCart);
+                    $variantItemsInCart[] = new ProductVariantInCart($variantInCart, $item->dimensions);
                 }
             }
         }
