@@ -9,9 +9,7 @@
         <p>
             {{ cart_item.variant.product.name }} /
             {{ cart_item.variant.name }} /
-            {{ cart_item.variant.price.valueWithoutVat }} Kč /
-            {{ cart_item.amount }} Ks /
-            Total: {{ cart_item.variant.price.valueWithoutVat * cart_item.amount }} Kč
+            {{ cart_item.variant.price.valueWithoutVat }} Kč
         </p>
     {% endfor %}
 

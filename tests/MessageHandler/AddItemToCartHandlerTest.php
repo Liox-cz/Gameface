@@ -36,20 +36,16 @@ class AddItemToCartHandlerTest extends KernelTestCase
 
         self::assertCount(1, $items);
 
-        self::assertSame(1, $items[0]->amount);
-        self::assertSame($variantId1, $items[0]->productVariantId);
+        self::assertTrue($variantId1->equals($items[0]->productVariantId));
 
         $this->handler->__invoke(new AddItemToCart($variantId1));
         $this->handler->__invoke(new AddItemToCart($variantId2));
 
         $items = $this->cartStorage->getItems();
 
-        self::assertCount(2, $items);
+        self::assertCount(3, $items);
 
-        self::assertSame(2, $items[0]->amount);
-        self::assertSame($variantId1, $items[0]->productVariantId);
-
-        self::assertSame(1, $items[1]->amount);
-        self::assertSame($variantId2, $items[1]->productVariantId);
+        self::assertTrue($variantId1->equals($items[1]->productVariantId));
+        self::assertTrue($variantId2->equals($items[2]->productVariantId));
     }
 }
