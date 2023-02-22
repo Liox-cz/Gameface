@@ -4,24 +4,19 @@ declare(strict_types=1);
 namespace Liox\Shop\Services\Cart;
 
 use Liox\Shop\Value\CartItem;
-use Ramsey\Uuid\UuidInterface;
-use SplObjectStorage;
 
 final class InMemoryCartStorage implements CartStorage
 {
-    /** @var SplObjectStorage<UuidInterface, int> */
-    private SplObjectStorage $items;
-
-    public function __construct()
-    {
-        $this->items = new SplObjectStorage();
+    public function __construct(
+        /** @var list<CartItem> */
+        private array $items = [],
+    ) {
     }
 
 
-    public function addItem(UuidInterface $productVariantId): void
+    public function addItem(CartItem $item): void
     {
-        $existing = $this->items[$productVariantId] ?? 0;
-        $this->items[$productVariantId] = $existing + 1;
+        $this->items[] = $item;
     }
 
     /**
@@ -29,17 +24,22 @@ final class InMemoryCartStorage implements CartStorage
      */
     public function getItems(): array
     {
-        $cart = [];
-
-        foreach ($this->items as $productVariantId) {
-            $cart[] = new CartItem($productVariantId, $this->items[$productVariantId]);
-        }
-
-        return $cart;
+        return $this->items;
     }
 
     public function clear(): void
     {
-        $this->items = new SplObjectStorage();
+        $this->items = [];
+    }
+
+    public function removeItem(CartItem $itemToRemove): void
+    {
+        foreach ($this->items as $key => $itemInCart) {
+            if ($itemToRemove->isSame($itemInCart)) {
+                unset($this->items[$key]);
+
+                return;
+            }
+        }
     }
 }

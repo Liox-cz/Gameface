@@ -4,8 +4,6 @@ declare(strict_types=1);
 namespace Liox\Shop\Services\Cart;
 
 use Liox\Shop\Value\CartItem;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 final class SessionCartStorage implements CartStorage
@@ -17,15 +15,14 @@ final class SessionCartStorage implements CartStorage
     ) {
     }
 
-    public function addItem(UuidInterface $productVariantId): void
+    public function addItem(CartItem $item): void
     {
         $session = $this->requestStack->getSession();
 
-        /** @var array<string, int> $items */
+        /** @var array<mixed> $items */
         $items = $session->get(self::SESSION_NAME, []);
 
-        $existingValue = $items[$productVariantId->toString()] ?? 0;
-        $items[$productVariantId->toString()] = $existingValue + 1;
+        $items[] = $item->toArray();
 
         $session->set(self::SESSION_NAME, $items);
     }
@@ -37,13 +34,13 @@ final class SessionCartStorage implements CartStorage
     {
         $session = $this->requestStack->getSession();
 
-        /** @var array<string, int> $items */
+        /** @var list<array{variant_id: string, dimensions: null|array{width: int, height: int}}> $items */
         $items = $session->get(self::SESSION_NAME, []);
 
         $cart = [];
 
-        foreach ($items as $productVariantIdAsString => $amount) {
-            $cart[] = new CartItem(Uuid::fromString($productVariantIdAsString), $amount);
+        foreach ($items as $itemData) {
+            $cart[] = CartItem::fromArray($itemData);
         }
 
         return $cart;
@@ -53,22 +50,34 @@ final class SessionCartStorage implements CartStorage
     {
         $session = $this->requestStack->getSession();
 
-        /** @var array<string, int> $items */
+        /** @var array<mixed> $items */
         $items = $session->get(self::SESSION_NAME, []);
 
-        $total = 0;
-
-        foreach ($items as $amount) {
-            $total += $amount;
-        }
-
-        return $total;
+        return count($items);
     }
 
     public function clear(): void
     {
+        $this->requestStack->getSession()
+            ->clear();
+    }
+
+    public function removeItem(CartItem $itemToRemove): void
+    {
         $session = $this->requestStack->getSession();
 
-        $session->clear();
+        /** @var list<array{variant_id: string, dimensions: null|array{width: int, height: int}}> $items */
+        $items = $session->get(self::SESSION_NAME, []);
+
+        foreach ($items as $key => $itemData) {
+            $itemInCart = CartItem::fromArray($itemData);
+
+            if ($itemInCart->isSame($itemToRemove)) {
+                unset($items[$key]);
+                $session->set(self::SESSION_NAME, $items);
+
+                return;
+            }
+        }
     }
 }
