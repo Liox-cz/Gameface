@@ -9,7 +9,8 @@
         <p>
             {{ cart_item.variant.product.name }} /
             {{ cart_item.variant.name }} /
-            {{ cart_item.variant.price.valueWithoutVat }} Kč
+            {{ cart_item.variant.price.valueWithoutVat }} Kč /
+            <a href="{{ path('remove_item_from_cart', {'variantId': cart_item.variant.id}) }}">odstranit z košíku</a>
         </p>
     {% endfor %}
 
