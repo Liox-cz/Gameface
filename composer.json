@@ -15,7 +15,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-uuid": "*",
-        "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.9",
