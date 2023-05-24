@@ -3,3 +3,9 @@ $primary: #643cfe;
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
+.coming-soon {
+    font-size: 24px;
+    text-align: center;
+    line-height: 60px;
+    padding-top: 150px;
+}

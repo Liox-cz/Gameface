@@ -15,21 +15,22 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            <a href="{{ path('homepage') }}">Home</a>
+        {% block full_content %}
+            <header>
+                <a href="{{ path('homepage') }}">Home</a>
 
-            <aside id="cart-overview">
-                <a href="{{ path('cart') }}">
-                    {{ cart.itemsCount }} položek v košíku<br>
-                    {{ cart.totalPrice.amount }} Kč
-                </a>
-            </aside>
+                <aside id="cart-overview">
+                    <a href="{{ path('cart') }}">
+                        {{ cart.itemsCount }} položek v košíku<br>
+                        {{ cart.totalPrice.amount }} Kč
+                    </a>
+                </aside>
 
-        </header>
+            </header>
 
-        <section class="container">
-            {% block content %}{% endblock %}
-        </section>
-
+            <section class="container">
+                {% block content %}{% endblock %}
+            </section>
+        {% endblock %}
     </body>
 </html>
