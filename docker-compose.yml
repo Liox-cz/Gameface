@@ -5,40 +5,21 @@ volumes:
     postgres-data:
 
 services:
-    composer:
-        build: .
-        image: liox-shop
-        volumes:
-            - .:/app
-        working_dir: /app
-        restart: 'no'
-        entrypoint: ["composer"]
-        command: ["install", "--no-interaction"]
-
-    # Helper service to run database migrations
-    db-migrations:
-        build: .
-        image: liox-shop
-        depends_on:
-            - postgres
-        volumes:
-            - .:/app
-        working_dir: /app
-        command: "bash -c 'wait-for-it postgres:5432 -- sleep 3 && bin/console doctrine:migrations:migrate --no-interaction'"
-
     web:
-        build: .
-        image: liox-shop
+        image: ghcr.io/liox-cz/php:8.2
+        restart: unless-stopped
         volumes:
             - unit-state:/var/lib/unit/state
             - .:/app
             - .docker/nginx-unit:/docker-entrypoint.d
-        working_dir: /app
-        restart: unless-stopped
         depends_on:
-            - composer
+            - postgres
         ports:
             - "${LIOX_WEB_PORT:-8080}:8080"
+        environment:
+            XDEBUG_CONFIG: "${LIOX_XDEBUG_CONFIG:-client_host=host.docker.internal}"
+            XDEBUG_MODE: debug
+            PHP_IDE_CONFIG: "serverName=liox"
 
     postgres:
         image: postgres:13

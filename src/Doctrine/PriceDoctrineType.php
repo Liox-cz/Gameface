@@ -39,7 +39,6 @@ final class PriceDoctrineType extends JsonType
 
         /** @var array{value_without_vat: int, vat: int, currency: string} $jsonData */
         $jsonData = parent::convertToPHPValue($value, $platform);
-        assert(is_array($jsonData));
 
         return new Price(
             $jsonData['value_without_vat'],
