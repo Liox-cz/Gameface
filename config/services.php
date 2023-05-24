@@ -37,9 +37,6 @@ return static function(ContainerConfigurator $configurator): void
     // Repositories
     $services->load('Liox\\Shop\\Repository\\', __DIR__ . '/../src/Repository/{*Repository.php}');
 
-    // Data fixtures
-    $services->load('Liox\\Shop\\Tests\\DataFixtures\\', __DIR__ . '/../tests/DataFixtures/{*.php}');
-
     // Message handlers
     $services->load('Liox\\Shop\\MessageHandler\\', __DIR__ . '/../src/MessageHandler/**/{*.php}');
 
