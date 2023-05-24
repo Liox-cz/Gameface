@@ -27,76 +27,6 @@
 </head>
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
-<!-- Sign in / sign up modal-->
-<div class="modal fade" id="signin-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-secondary">
-                <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                    <li class="nav-item"><a class="nav-link fw-medium active" href="#signin-tab" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>Sign in</a></li>
-                    <li class="nav-item"><a class="nav-link fw-medium" href="#signup-tab" data-bs-toggle="tab" role="tab" aria-selected="false"><i class="ci-user me-2 mt-n1"></i>Sign up</a></li>
-                </ul>
-                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body tab-content py-4">
-                <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab">
-                    <div class="mb-3">
-                        <label class="form-label" for="si-email">Email address</label>
-                        <input class="form-control" type="email" id="si-email" placeholder="johndoe@example.com" required>
-                        <div class="invalid-feedback">Please provide a valid email address.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="si-password">Password</label>
-                        <div class="password-toggle">
-                            <input class="form-control" type="password" id="si-password" required>
-                            <label class="password-toggle-btn" aria-label="Show/hide password">
-                                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="mb-3 d-flex flex-wrap justify-content-between">
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" id="si-remember">
-                            <label class="form-check-label" for="si-remember">Remember me</label>
-                        </div><a class="fs-sm" href="#">Forgot password?</a>
-                    </div>
-                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign in</button>
-                </form>
-                <form class="needs-validation tab-pane fade" autocomplete="off" novalidate id="signup-tab">
-                    <div class="mb-3">
-                        <label class="form-label" for="su-name">Full name</label>
-                        <input class="form-control" type="text" id="su-name" placeholder="John Doe" required>
-                        <div class="invalid-feedback">Please fill in your name.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="su-email">Email address</label>
-                        <input class="form-control" type="email" id="su-email" placeholder="johndoe@example.com" required>
-                        <div class="invalid-feedback">Please provide a valid email address.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="su-password">Password</label>
-                        <div class="password-toggle">
-                            <input class="form-control" type="password" id="su-password" required>
-                            <label class="password-toggle-btn" aria-label="Show/hide password">
-                                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="su-password-confirm">Confirm password</label>
-                        <div class="password-toggle">
-                            <input class="form-control" type="password" id="su-password-confirm" required>
-                            <label class="password-toggle-btn" aria-label="Show/hide password">
-                                <input class="password-toggle-check" type="checkbox"><span class="password-toggle-indicator"></span>
-                            </label>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Sign up</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 <main class="page-wrapper">
     <section class="mb-lg-2 bg-faded-accent bg-size-cover" style="padding-top: 80px; background-image: url(img/nft/home/hero-bg.png);">
         <div class="container py-4">
@@ -104,62 +34,19 @@
                 <div class="col-lg-5 col-md-8 col-sm-10">
                     <h1 class="mb-4 pb-lg-2">Již brzy budeme spouštět, buď u toho!</h1>
                     <p class="mb-lg-5 mb-4 fs-lg">Revoluční obchod který přinese mnoho vylaďených doplňků a dekorací do tvého interiéru.</p>
-                    <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="./nft-catalog-v1.html">O našem projektu</a></div>
+                    <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="#">O našem projektu</a></div>
                 </div>
                 <div class="col-lg-6 col-md-8 offset-lg-1 col-sm-10">
                     <!-- Top auctions carousel-->
                     <div class="tns-carousel tns-nav-enabled mb-4 mx-n2">
                         <div class="tns-carousel-inner" data-carousel-options="{&quot;controls&quot;: false}">
                             <!-- Carousel item-->
-                            <div class="px-2"><img class="rounded-3" src="img/nft/home/01.jpg" alt="Product">
-                            </div>
-                            <!-- Carousel item-->
-                            <div class="px-2"><img class="rounded-3" src="img/nft/home/02.jpg" alt="Product">
-                                <div class="position-relative">
-                                    <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-                                        <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
-                                            <div class="row gx-5">
-                                                <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                                                    <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">0.8 ETH</span>
-                                                </div>
-                                                <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                                                    <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                                                    <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">4 hours</span>
-                                                </div>
-                                                <div class="col-sm-4 position-relative py-sm-3 py-2">
-                                                    <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                                                    <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Carousel item-->
-                            <div class="px-2"><img class="rounded-3" src="img/nft/home/03.jpg" alt="Product">
-                                <div class="position-relative">
-                                    <div class="position-absolute start-0 bottom-0 w-100 p-md-5 p-sm-4 p-3">
-                                        <div class="pt-sm-0 pt-2 px-sm-4 px-2 bg-white rounded shadow">
-                                            <div class="row gx-5">
-                                                <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                                                    <h6 class="mb-1 fs-sm fw-normal text-muted">Current bid:</h6><span class="h6 mb-0">1.2 ETH</span>
-                                                </div>
-                                                <div class="col-sm-4 col-6 position-relative py-sm-3 py-2">
-                                                    <hr class="hr-vertical position-absolute start-0 top-0 ml-n4">
-                                                    <h6 class="mb-1 fs-sm fw-normal text-muted">Ends in:</h6><span class="h6 mb-0">10 hours</span>
-                                                </div>
-                                                <div class="col-sm-4 position-relative py-sm-3 py-2">
-                                                    <hr class="hr-vertical position-absolute start-0 top-0 ml-n4 d-sm-block d-none">
-                                                    <div class="d-flex align-items-center h-100"><a class="btn btn-sm btn-dark w-100" href="nft-single-auction-live.html">Start bid</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="px-2"><img class="rounded-3" src="img/nft/home/01.jpg" alt="Product"></div>
+                            <div class="px-2"><img class="rounded-3" src="img/nft/home/02.jpg" alt="Product"></div>
+                            <div class="px-2"><img class="rounded-3" src="img/nft/home/03.jpg" alt="Product"></div>
                         </div>
                     </div>
-                    <div class="d-lg-none d-flex flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-2" href="nft-catalog-v1.html">Explore marketplace</a><a class="btn btn-lg btn-outline-dark mb-2" href="nft-create-item.html">Create your NFT</a></div>
+                    <div class="d-lg-none d-flex flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-2" href="#">Explore marketplace</a><a class="btn btn-lg btn-outline-dark mb-2" href="#">Create your NFT</a></div>
                 </div>
             </div>
         </div>
@@ -175,10 +62,10 @@
                 <!-- Product item-->
                 <div class="col py-3">
                     <article class="card h-100 border-0 shadow">
-                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="img/nft/catalog/01.jpg" alt="Product image"></a>
+                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="#"><img src="img/nft/catalog/01.jpg" alt="Product image"></a>
                         </div>
                         <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-auction-live.html">Limitované AI motivy</a></h3>
+                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">Limitované AI motivy</a></h3>
                         </div>
                     </article>
                 </div>
@@ -186,10 +73,10 @@
                 <!-- Product item-->
                 <div class="col py-3">
                     <article class="card h-100 border-0 shadow">
-                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="img/nft/catalog/02.jpg" alt="Product image"></a>
+                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="#"><img src="img/nft/catalog/02.jpg" alt="Product image"></a>
                         </div>
                         <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-auction-live.html">Akustické paravány</a></h3>
+                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">Akustické paravány</a></h3>
                         </div>
                     </article>
                 </div>
@@ -197,10 +84,10 @@
                 <!-- Product item-->
                 <div class="col py-3">
                     <article class="card h-100 border-0 shadow">
-                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="img/nft/catalog/03.jpg" alt="Product image"></a>
+                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="#"><img src="img/nft/catalog/03.jpg" alt="Product image"></a>
                         </div>
                         <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-auction-live.html">Unikátní kolekce a kolaborace</a></h3>
+                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">Unikátní kolekce a kolaborace</a></h3>
                         </div>
                     </article>
                 </div>
@@ -208,10 +95,10 @@
                 <!-- Product item-->
                 <div class="col py-3">
                     <article class="card h-100 border-0 shadow">
-                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="nft-single-auction-live.html"><img src="img/nft/catalog/02.jpg" alt="Product image"></a>
+                        <div class="card-img-top position-relative overflow-hidden"><a class="d-block" href="#"><img src="img/nft/catalog/02.jpg" alt="Product image"></a>
                         </div>
                         <div class="card-body">
-                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="nft-single-auction-live.html">Nadstandardní rozměry obrazů</a></h3>
+                            <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="#">Nadstandardní rozměry obrazů</a></h3>
                         </div>
                     </article>
                 </div>
@@ -260,15 +147,15 @@
         <div class="tns-carousel pb-lg-5 pb-4">
             <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: false, &quot;nav&quot;: true, &quot;gutter&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;992&quot;:{&quot;items&quot;:3}}}">
                 <!-- Carousel item-->
-                <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/01.jpg" alt="Blog image"></a>
+                <article><a class="d-block mb-3" href="#"><img class="rounded-3" src="img/nft/blog/01.jpg" alt="Blog image"></a>
                     <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">Instagram</a></div>
                 </article>
                 <!-- Carousel item-->
-                <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/02.jpg" alt="Blog image"></a>
+                <article><a class="d-block mb-3" href="#"><img class="rounded-3" src="img/nft/blog/02.jpg" alt="Blog image"></a>
                     <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">Youtube</a></div>
                 </article>
                 <!-- Carousel item-->
-                <article><a class="d-block mb-3" href="blog-single.html"><img class="rounded-3" src="img/nft/blog/03.jpg" alt="Blog image"></a>
+                <article><a class="d-block mb-3" href="#"><img class="rounded-3" src="img/nft/blog/03.jpg" alt="Blog image"></a>
                     <div class="d-flex align-items-center fs-sm pb-2"><a class="blog-entry-meta-link" href="#">Facebook</a></div>
                 </article>
             </div>
