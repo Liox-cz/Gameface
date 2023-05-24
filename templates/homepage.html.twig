@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}GameFace.cz{% endblock %}
 
-{% block content %}
-    {% for product in products %}
+{% block full_content %}
+    <div class="coming-soon">
+        <h1>GameFace</h1>
+        <h2>Již brzy budeme spouštět, buď u toho!</h2>
         <p>
-            <a href="{{ path('product_detail', {productId: product.id}) }}">
-                {{ product.name }}
-            </a>
+            Revoluční obchod který přinese mnoho vylaďených doplňků a dekorací do tvého interiéru.
         </p>
-    {% endfor %}
+    </div>
 {% endblock %}
