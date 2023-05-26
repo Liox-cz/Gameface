@@ -23,6 +23,14 @@
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </head>
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
@@ -31,6 +39,7 @@
         <div class="container py-4">
             <div class="row align-items-center justify-content-center gy-3 py-3 text-lg-start text-center">
                 <div class="col-lg-5 col-md-8 col-sm-10">
+                    <img src="{{ asset('img/logo-gameface.png') }}" alt="GameFace logo" class="logo mb-5">
                     <h1 class="mb-4 pb-lg-2">Již brzy budeme spouštět, buď u toho!</h1>
                     <p class="mb-lg-5 mb-4 fs-lg">Revoluční obchod který přinese mnoho vyladěných doplňků a dekorací do tvého interiéru.</p>
                     <div class="d-lg-flex d-none flex-sm-row flex-column justify-content-lg-start justify-content-center"><a class="btn btn-lg btn-accent me-sm-3 mb-sm-3 mb-2" href="#">O našem projektu</a></div>

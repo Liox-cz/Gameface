@@ -1,39 +1,6 @@
-$primary: #643cfe;
-
 // the ~ allows you to reference things in node_modules
-@import "~bootstrap/scss/bootstrap";
 
-.coming-soon {
-    font-size: 24px;
-    text-align: center;
-    line-height: 30px;
-    background: #fff;
-    box-shadow: rgba(0, 0, 0, .15) 0 0 15px;
-    border-radius: 6px;
-    padding: 40px;
-    margin: 30vh auto 20vh auto;
-    min-width: 40%;
-    max-width: 800px;
-    z-index: 1000;
-    position: relative;
-
-    h1 {
-        margin-bottom: 25px;
-    }
-
-    h2 {
-        margin-bottom: 40px;
-    }
-}
-
-.overlay-background::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
+.logo {
+    max-width: 500px;
     width: 100%;
-    height: 50vh;
-    background: #373f50;
-    z-index: 10;
 }
