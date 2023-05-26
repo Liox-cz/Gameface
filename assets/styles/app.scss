@@ -5,3 +5,13 @@
     max-width: 500px;
     width: 100%;
 }
+
+.home-hero {
+    @media (min-width: 768px) {
+        padding-top: 30px;
+    }
+
+    @media (min-width: 1024px) {
+        padding-top: 60px;
+    }
+}
