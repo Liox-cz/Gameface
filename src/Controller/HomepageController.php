@@ -43,7 +43,7 @@ final class HomepageController extends AbstractController
                 if ($previousException instanceof EmailAlreadySubscribedToNewsletter) {
                     $this->addFlash('bg-warning text-white', 'Tvůj e-mail byl již v minulosti subscribnut. O žádnou z našich novinek nepřijdeš! ;-)');
                 } else {
-                    throw $previousException;
+                    throw $handlerFailedException;
                 }
             }
 
