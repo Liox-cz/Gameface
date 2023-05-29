@@ -34,6 +34,21 @@
 <!-- Body-->
 <body class="handheld-toolbar-enabled">
 <main class="page-wrapper">
+
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="toast-container position-fixed top-0 start-50 translate-middle-x pt-5">
+                <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header {{ type }}">
+                        <i class="ci-check-circle me-2"></i>
+                        <span class="fw-medium me-auto">{{ message }}</span>
+                        <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <section class="home-hero mb-lg-2 bg-faded-accent bg-size-cover" style="background-image: url(img/art/home/hero-bg.png);">
         <div class="container py-4">
             <div class="row align-items-center justify-content-center gy-3 py-3 text-lg-start text-center">
@@ -152,15 +167,16 @@
                 <h3 class="mb-3">Never miss a drop!</h3>
                 <p class="mb-4 pb-2">Neriskuj že zmeškáš dropy nových kolekcí a slev. Zadej email a buď safe!</p>
                 <div class="widget mx-auto" style="max-width: 500px;">
-                    <form class="subscription-form validate" action="" method="post" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                    {{ form_start(subscribe_newsletter_form) }}
+                        {{ form_errors(subscribe_newsletter_form) }}
+
                         <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
-                            <input class="form-control rounded-start" type="email" name="EMAIL" placeholder="Tvůj email" required>
+                            {{ form_widget(subscribe_newsletter_form.email, {'attr': {'class': 'form-control rounded-start', 'placeholder': 'Tvůj e-mail'}}) }}
                             <button class="btn btn-accent" type="submit" name="subscribe">Odebírej!</button>
                         </div>
-                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                            <input class="subscription-form-antispam" type="text" name="b_c7103e2c981361a6639545bd5_29ca296126" tabindex="-1">
-                        </div>
+
+                        {{ form_errors(subscribe_newsletter_form.email) }}
+
                         <div class="form-text mt-3">* vyplněním emailu potvrzuješ souhlas novinkám a slevám</div>
                         <div class="subscription-status"></div>
 
@@ -177,7 +193,7 @@
                                     <i class="ci-youtube"></i>
                                 </a></span>
                         </div>
-                    </form>
+                    {{ form_end(subscribe_newsletter_form) }}
                 </div>
             </div>
         </div>
