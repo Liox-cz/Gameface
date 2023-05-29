@@ -4,13 +4,9 @@ declare(strict_types=1);
 namespace Liox\Shop\Controller;
 
 use Liox\Shop\Exceptions\EmailAlreadySubscribedToNewsletter;
-use Liox\Shop\FormData\AddToCartFormData;
 use Liox\Shop\FormData\SubscribeNewsletterFormData;
-use Liox\Shop\FormType\AddToCartFormType;
 use Liox\Shop\FormType\SubscribeNewsletterFormType;
-use Liox\Shop\Message\AddItemToCart;
 use Liox\Shop\Message\SubscribeNewsletter;
-use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,7 +41,9 @@ final class HomepageController extends AbstractController
                 $previousException = $handlerFailedException->getPrevious();
 
                 if ($previousException instanceof EmailAlreadySubscribedToNewsletter) {
-                    $this->addFlash('bg-warning text-white', 'Tvůj e-mail je již subscribnut a o žádnou z našich novinek nepřijdeš!');
+                    $this->addFlash('bg-warning text-white', 'Tvůj e-mail byl již v minulosti subscribnut. O žádnou z našich novinek nepřijdeš! ;-)');
+                } else {
+                    throw $previousException;
                 }
             }
 

@@ -5,18 +5,13 @@ namespace Liox\Shop\Entity;
 
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Doctrine\UuidType;
-use Ramsey\Uuid\UuidInterface;
 
 #[ORM\Entity]
 class NewsletterSubscription
 {
     public function __construct(
         #[ORM\Id]
-        #[ORM\Column(type: UuidType::NAME, unique: true)]
-        public readonly UuidInterface $id,
-
-        #[ORM\Column(type: Types::STRING, length: 150, unique: true)]
+        #[ORM\Column(type: Types::STRING, length: 150)]
         public readonly string $email,
 
         #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
