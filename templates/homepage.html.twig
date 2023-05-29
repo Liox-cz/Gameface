@@ -170,7 +170,7 @@
                     {{ form_start(subscribe_newsletter_form) }}
                         {{ form_errors(subscribe_newsletter_form) }}
 
-                        <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
+                        <div class="input-group flex-nowrap"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3" style="z-index: 10;"></i>
                             {{ form_widget(subscribe_newsletter_form.email, {'attr': {'class': 'form-control rounded-start', 'placeholder': 'Tvůj e-mail'}}) }}
                             <button class="btn btn-accent" type="submit" name="subscribe">Odebírej!</button>
                         </div>
