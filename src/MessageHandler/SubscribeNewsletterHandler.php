@@ -7,7 +7,6 @@ use Liox\Shop\Entity\NewsletterSubscription;
 use Liox\Shop\Exceptions\EmailAlreadySubscribedToNewsletter;
 use Liox\Shop\Message\SubscribeNewsletter;
 use Liox\Shop\Repository\NewsletterSubscriptionRepository;
-use Ramsey\Uuid\Uuid;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
@@ -28,7 +27,6 @@ readonly final class SubscribeNewsletterHandler
         }
 
         $subscription = new NewsletterSubscription(
-            Uuid::uuid7(),
             $command->email,
             new \DateTimeImmutable(),
         );
